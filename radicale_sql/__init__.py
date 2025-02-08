@@ -590,9 +590,8 @@ class Storage(BaseStorage):
             l += list(self_collection._get_all(connection=connection))
         return l
 
-    def discover(self, path: str, depth: str = "0", child_context_manager: Optional[
-            Callable[[str, Optional[str]], ContextManager[None]]] = None,
-            user_groups: Set[str] = set([])) -> Iterable["radicale.types.CollectionOrItem"]:
+    def discover(self, path: str, depth: str = "0", child_context_manager = None,
+            user_groups = set([])) -> Iterable["radicale.types.CollectionOrItem"]:
         with self._engine.begin() as c:
             return self._discover(path, connection=c, depth=depth)
 
