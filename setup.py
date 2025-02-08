@@ -8,5 +8,5 @@ setup(
     version='0.1.0',
     packages=['radicale_sql'],
     description='A SQL backed storage for radicale.',
-    url='https://github.com/koalyorg/radicale-sql',
+    url='https://github.com/ajay-gandhi/radicale-sql',
 )

@@ -370,7 +370,7 @@ class Collection(BaseCollection):
             if href in state:
                 # we don't want to overwrite states
                 # this could happen with another storage collection
-                # which doesn't store the items itself, but 
+                # which doesn't store the items itself, but
                 # derives them from another one
                 continue
             history_etag = self._update_history_etag(href, item, connection=connection)
@@ -590,7 +590,9 @@ class Storage(BaseStorage):
             l += list(self_collection._get_all(connection=connection))
         return l
 
-    def discover(self, path: str, depth: str = "0") -> Iterable["radicale.types.CollectionOrItem"]:
+    def discover(self, path: str, depth: str = "0", child_context_manager: Optional[
+            Callable[[str, Optional[str]], ContextManager[None]]] = None,
+            user_groups: Set[str] = set([])) -> Iterable["radicale.types.CollectionOrItem"]:
         with self._engine.begin() as c:
             return self._discover(path, connection=c, depth=depth)
 
